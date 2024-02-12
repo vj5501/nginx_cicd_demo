@@ -7,8 +7,7 @@ on:
 
 jobs:
   build:
-  runs-on: self-hosted
-  
+    runs-on: self-hosted
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -28,4 +27,3 @@ jobs:
           # For example, if your HTML files are in the 'dist' folder
           sudo cp -r dist/* /var/www/html/
           sudo systemctl restart nginx
-
