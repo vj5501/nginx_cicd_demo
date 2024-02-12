@@ -1,0 +1,31 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Nginx
+        run: |
+          sudo apt-get update
+          sudo apt-get install nginx -y
+          sudo systemctl start nginx
+          sudo systemctl enable nginx
+
+      # Add additional steps for building and testing your application
+
+      - name: Deploy to Local Nginx
+        run: |
+          # Copy your build artifacts to Nginx root directory
+          # For example, if your HTML files are in the 'dist' folder
+          sudo cp -r dist/* /var/www/html/
+          sudo systemctl restart nginx
+
