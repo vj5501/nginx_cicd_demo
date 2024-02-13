@@ -14,16 +14,16 @@ jobs:
 
       - name: Set up Nginx
         run: | 
-          echo "1234" | sudo -S apt-get update
+          sudo apt-get update
           sudo apt-get install nginx -y
           sudo systemctl start nginx
           sudo systemctl enable nginx
-
-      # Add additional steps for building and testing your application
 
       - name: Deploy to Local Nginx
         run: |
           # Copy your build artifacts to Nginx root directory
           # For example, if your HTML files are in the 'dist' folder
-          echo "1234" | sudo -S cp -r dist/* /var/www/html/
+          sudo cp -r dist/* /var/www/html/
           sudo systemctl restart nginx
+        env:
+          NGINX_PASSWORD: ${{ secrets.NGINX_PASSWORD }}
