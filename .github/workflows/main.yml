@@ -14,7 +14,7 @@ jobs:
 
       - name: Set up Nginx
         run: | 
-          sudo apt-get update
+          echo "${{ secrets.NGINX_PASSWORD }}" | sudo -S apt-get update
           sudo apt-get install nginx -y
           sleep 5  # Wait for Nginx to be installed completely
           sudo systemctl start nginx
@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy to Local Nginx
         run: |
-          sudo cp -r dist/* /var/www/html/
+          cho "${{ secrets.NGINX_PASSWORD }}" | sudo cp -r dist/* /var/www/html/
           sudo systemctl restart nginx
         env:
           NGINX_PASSWORD: ${{ secrets.NGINX_PASSWORD }}
