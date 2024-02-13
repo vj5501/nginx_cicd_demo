@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy to Local Nginx
         run: |
-          cho "${{ secrets.NGINX_PASSWORD }}" | sudo cp -r dist/* /var/www/html/
+          echo "${{ secrets.NGINX_PASSWORD }}" | sudo cp -r dist/* /var/www/html/
           sudo systemctl restart nginx
         env:
           NGINX_PASSWORD: ${{ secrets.NGINX_PASSWORD }}
