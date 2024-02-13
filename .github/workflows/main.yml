@@ -25,5 +25,5 @@ jobs:
         run: |
           # Copy your build artifacts to Nginx root directory
           # For example, if your HTML files are in the 'dist' folder
-          sudo cp -r dist/* /var/www/html/
+          echo "1234" | sudo cp -r dist/* /var/www/html/
           sudo systemctl restart nginx
